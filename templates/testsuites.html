@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Bronn Framework</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+   </head>
+      <!-- -->
+    <body>
+	  <br>
+	    <div class="container-fluid" style="min-height:100%; margin-bottom: 100px;">
+           <h4>Test Suites and Test Methods<span class="label label-default"></span></h4>
+            <table class="table table-striped" border="2" colspan="2">
+            <th>SuiteName</th><th>TestCaseName</th><th>Deprecated</th>
+            {% for t in dasMethods %}
+                <tr>
+                   <td>{{ t[0] }}</td>
+                   <td>{{ t[1] }}</td>
+                   <td>{{ t[2] }}</td>
+                </tr>
+            {% endfor %}
+             </table>
+		</div>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

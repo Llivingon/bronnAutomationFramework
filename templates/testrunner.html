@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Bronn Framework</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+   </head>
+      <!-- -->
+    <body>
+    <br>
+    <h4>Py ATF Regression Runner</h4>
+      <div class="container-fluid" style="min-height:100%; margin-bottom: 100px;">
+         <form action="" name="ATF" id="ATF" class="form-inline" method="post">
+         <input type="hidden" name="formId" value="atf">
+            <div class="container-fluid">
+            <table class="table table-striped" border="2" colspan="2">
+                <tr>
+                    <td>Test Run Summary</td>
+                    <div class="input-group">
+                    <td>
+                      <input type="text" class="form-control" name="RunSummary" placeholder="RunReason"aria-describedby="basic-addon1" required>
+                    </td>
+                    </div>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><button type="submit" value="TestRunner" class="btn btn-default" >Start Regression</button></td>
+                </tr>
+             </table>
+		    </div>
+         </form>
+      </div>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

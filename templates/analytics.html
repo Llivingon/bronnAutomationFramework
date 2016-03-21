@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Bronn Framework</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+      <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+      <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+   </head>
+
+    <body>
+    <br><br>
+<!-- Test Run Tracker -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jsapi.js') }}"></script>
+    <div class="tldate">Report-1</div><br><br>
+      <div class="alert alert-info" role="alert">
+        <a href="#" class="alert-link">Test Run Calendar</a>
+      </div>
+    <div id="timeline" style="height: 360px;"></div><br><br>
+  <script type='text/javascript'>//<![CDATA[
+    google.load("visualization", "1", {packages:["timeline"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn({ type: 'string', id: 'RunId/Runner' });
+            dataTable.addColumn({ type: 'datetime', id: 'Start' });
+            dataTable.addColumn({ type: 'datetime', id: 'End' });
+            dataTable.addRows([
+            {% for t in trackerRecordsData %}
+            {{t| safe}}
+            {% endfor %}
+            ]);
+            chart.draw(dataTable);
+        }
+    //]]>
+  </script>
+<!-- Test Run Tracker -->
+
+<!-- Test Run Time line-->
+<div class="container-fluid" style="min-height:100%; margin-bottom: 20px;">
+  <ul class="timeline">
+    <li><div class="tldate">Report-2</div></li>
+      <div class="alert alert-info" role="alert">
+        <a href="#" class="alert-link">Summary of latest 15 Test Runs</a>
+      </div>
+	{% for t in timeLineData %}
+      {% if 'left' in leaflet %}
+        <li>
+          <div class="tl-circ"></div>
+          <div class="timeline-panel">
+                    <div class="tl-body">
+              <p>Test Run: <a href="/Results?runId={{t[0]}}">{{ t[0] }}</a></p>
+            </div>
+            <div class="tl-heading">
+              <h6>{{ t[3] }}</h6>
+              <h6>Summary: {{ t[1] }}</h6>
+              <h6>Passed: {{ t[6] }}</h6>
+              <h6>Failed: {{ t[8] }}</h6>
+              <h6>TimedOut: {{ t[10] }}</h6>
+              <p>Start  <small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ t[2] }}</small></p>
+              <p>End  <small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ t[4] }}</small></p>
+            </div>
+          </div>
+        </li>
+        {% set leaflet = 'right' %}
+      {% else %}
+        <li class="timeline-inverted">
+          <div class="tl-circ"></div>
+          <div class="timeline-panel">
+            <div class="tl-heading">
+              <p>Test Run: <a href="/Results?runId={{t[0]}}">{{ t[0] }}</a></p>
+            </div>
+            <div class="tl-heading">
+              <h6>{{ t[3] }}</h6>
+              <h6>Summary: {{ t[1] }}</h6>
+              <h6>Passed: {{ t[6] }}</h6>
+              <h6>Failed: {{ t[8] }}</h6>
+              <h6>TimedOut: {{ t[10] }}</h6>
+              <p>Start  <small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ t[2] }}</small></p>
+              <p>End  <small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ t[4] }}</small></p>
+            </div>
+          </div>
+        </li>
+        {% set leaflet = 'left' %}
+      {% endif %}
+	{% endfor %}
+  </ul>
+</div>
+<!-- Test Run Time line-->
+
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+
+          {% endblock %}
+   </body>
+</html>

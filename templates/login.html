@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<body>
+<div class="container">
+<br>
+<h4>Please Login:</h4>
+<br>
+</div>
+
+<form action="" class="form-inline" method="post">
+    <input type="text" class="form-control" placeholder ="Username" name="username" value="{{request.form.username}}">
+    <input type="password" class="form-control" placeholder ="Password" name="password" value="{{request.form.password}}">
+    <input class="bt btn-default" type="submit" value="Login">
+</form>
+
+    <p>{{error}}</p>
+<br>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

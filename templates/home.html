@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Bronn Automation Test Framework HomePage</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+   </head>
+      <!-- -->
+    <body>
+	  <br>
+	    <div class="container-fluid" style="min-height:100%; margin-bottom: 100px;">
+            <h4>Overview</h4>
+            <p>https://github.com/Llivingon/BronnAutomationFramework</p>
+            <br>
+           <h4>Bronn Framework</h4>
+           <p>Our mission is to provide data, services and tools to positively impact the quality anything that we're testing.</p>
+           {% if session.logged_in %}
+            <p>Talk to Us! <br><br>
+            <br><br>
+            We would love to hear from you. Here are various ways of reaching and/or finding out more information </p>
+            <ul>
+            <li>Wiki: <a href="https://github.com/Llivingon/BronnAutomationFramework/wiki"> DAS QA Wiki</a></li>
+            <li>Email: <a href="mailto:Lingesh_Aradhya@cable.comcast.com?Subject=FromQAWiki" target="_top">Send Mail</a></li>
+            <li>Contributor Corner: <a href="#">Our list of fantastic team contributors</a></li>
+            </ul>
+           {% else %}
+           <p> Registered Users <a href="/Login"> Login  </a></p>
+           <p> New users feel free to <a href="/Register"> Signup  </a> to start using our Portal</p>
+           {% endif %}
+            <br><br>
+
+		</div>
+      <div>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

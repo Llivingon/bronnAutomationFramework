@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Bronn Framework</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+   </head>
+      <!-- -->
+    <body>
+    <div class="container-fluid" style="min-height:100%; margin-bottom: 100px;">
+      <br>
+    <h4>Results <span class="label label-default"></span></h4>
+       <div class="list-group">
+           <a href="#" class="list-group-item"><small class="text-muted"><i class="glyphicon glyphicon-time"></i>: {{ table[0][1] }}</small></a>
+           <a href="#" class="list-group-item">Runner         : {{ table[0][6] }}</a>
+           <a href="#" class="list-group-item">Run ID         : {{ table[0][0] }}</a>
+         </div>
+
+    <h4>Progression Bar <span class="label label-default"></span></h4>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" style="width: {{passedCount/totalTests*100}}%">
+            <span class="sr-only">{{passPercentage}}% Complete (success)</span>
+              {{passPercentage}}%
+          </div>
+          <div class="progress-bar progress-bar-danger" style="width: {{failedCount/totalTests*100}}%">
+            <span class="sr-only">{{failPercentage}}% Failed (danger)</span>
+              {{failPercentage}}%
+          </div>
+        </div>
+       <div class="container-fluid" style="min-height:50%; margin-bottom: 50;">
+      <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" ><a href="#">Total Tests Run<span class="badge">{{totalTests}}</span></a></li>
+            <li role="presentation" ><a href="#">Passed<span class="badge">{{passedCount}}</span></a></li>
+            <li role="presentation" ><a href="#">Failed <span class="badge">{{failedCount}}</span></a></li>
+            <li role="presentation" ><a href="/logs/{{table[0][8]}}">Click here to Download DAS Logs: {{table[0][8]}}</span></a></li>
+      </ul>
+      </div>
+      <br>
+      <br>
+
+            <table class="table table-striped" border="2" colspan="2">
+            <th>TestCaseId</th><th>Service</th><th>Method</th><th>Description</th><th>Result</th>
+            {% for t in table %}
+                <tr>
+                   <td>{{ t[2] }}</td>
+                   <td>{{ t[3] }}</td>
+                   <td>{{ t[4] }}</td>
+                   <td>{{ t[5] }}</td>
+                   {% if t[7]=="Pass"%}
+                   <td><li>
+                        <span class="glyphicon glyphicon-thumbs-up" style="color:green" aria-hidden="true"></span>
+                        <span class="glyphicon-class">{{ t[7] }}</span>
+                    </li></td>
+                     {% else %}
+                    <td><li>
+                      <span class="glyphicon glyphicon-thumbs-down" style="color:red" aria-hidden="true"></span>
+                      <span class="glyphicon-class">{{ t[7] }}</span>
+                    </li>
+                    {% endif %}</td>
+
+                </tr>
+            {% endfor %}
+             </table>
+		</div>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

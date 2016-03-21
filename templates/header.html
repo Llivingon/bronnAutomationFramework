@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Automation Test Framework HomePage</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+   </head>
+<header>
+      <div class="navbar-header">
+         <a class="navbar-brand" href="/">
+         <img style="max-width:120px; margin-top: -7px;" src="{{ url_for('static', filename='images/mainlogo.jpg') }}">
+         </a>
+      </div>
+      <div class = "container-fluid">
+         <a href="/Home"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Home Page
+         </button></a>
+         <a href="/TestSuites"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Test Suites
+         </button></a>
+         <a href="/TestCases"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Test Cases
+         </button></a>
+         <a href="/Results"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Results
+         </button></a>
+         <a href="/Analytics"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Analytics
+         </button></a>
+         <a href="/TestRunner"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+         <span class="glyphicon glyphicon-on" aria-hidden="true"></span> Test Runner
+         </button></a>
+
+         <ul class="nav navbar-nav navbar-right">
+            <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
+               <a href="/agent"> <span class="glyphicon glyphicon-heart"></span> Forum  </a>
+               {% if session.logged_in %}
+                <a href="/Logout"> <span class="glyphicon glyphicon-heart"></span> Logout {{session['username']}} </a>
+               {% else %}
+               <a href="/Login"> <span class="glyphicon glyphicon-heart"></span> Login  </a>
+               <a href="/Register"> <span class="glyphicon glyphicon-heart"></span> Signup  </a>
+               {% endif %}
+            </div>
+         </ul>
+      </div>
+
+</header>
+       <body>
+
+<!-- Flash Message -->
+    <div class="container" style="min-height:100% width:80%">
+       {% with messages = get_flashed_messages() %}
+         {% if messages %}
+           {% for message in messages %}
+             <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+               {{message}}
+             </div>
+           {% endfor %}
+         {% endif %}
+       {% endwith %}
+<!-- /Flash Message -->
+          {% block headerContent %}
+          {% endblock %}
+         <div id="footer">
+             {% block footerContent %}
+             &copy; Copyright 2016 by <a href="https://github.com/Llivingon/" target="_blank">https://github.com/Llivingon/</a>.
+            {% endblock %}
+         </div>
+    </div>
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>

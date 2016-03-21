@@ -1,0 +1,1 @@
+__all__ = ['suite1', 'suite2', '__init__']

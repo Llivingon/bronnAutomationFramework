@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+{% block headerContent %}
+<body>
+<div class="container">
+<br>
+<h4>Please enter your email:</h4>
+<br>
+</div>
+
+<form action="" class="form-inline" method="post">
+    <input type="text" class="form-control" placeholder ="Retrieve email" name="retrieveEmail" value="{{request.form.retrieveEmail}}" required>
+    <input class="bt btn-default" type="submit" value="Retrieve Credentials">
+</form>
+
+    <p>{{error}}</p>
+<br>
+      {% endblock %}
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+   </body>
+</html>
