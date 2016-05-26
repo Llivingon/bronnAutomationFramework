@@ -1,0 +1,12 @@
+2016-05-26 16:19:07,193 INFO Run Summary:ASAsa
+2016-05-26 16:19:07,194 INFO Run ID Created:1225
+2016-05-26 16:19:07,230 INFO Test Case Ids in Regression Suite: [1, 2, 3]
+2016-05-26 16:19:07,230 INFO Starting Regression ID:1225
+2016-05-26 16:19:07,232 INFO Validating: testcallflow1
+2016-05-26 16:19:07,233 DEBUG Test ID: 1
+2016-05-26 16:19:07,234 INFO Validating: testcallflow2
+2016-05-26 16:19:07,234 DEBUG Test ID: 2
+2016-05-26 16:19:07,237 INFO Validating: testcallflow2
+2016-05-26 16:19:07,237 DEBUG Test ID: 3
+2016-05-26 16:19:07,242 INFO Total Tests Run: 3
+2016-05-26 16:19:07,243 INFO Result:<unittest.runner.TextTestResult run=3 errors=0 failures=0>

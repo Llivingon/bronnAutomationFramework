@@ -20,7 +20,7 @@ class Suite1(unittest.TestCase):
         """TestCase:testcallflow1"""
         self.testId = self.params[0][0]
         inputParam = self.params[0][1]
-		outputParam = self.params[0][2]
+	outputParam = self.params[0][2]
         trackingId = "QA_"+self._testMethodName[4:]+str(time.time()).replace(".","")[8:]
         return "PASS"
 
@@ -28,6 +28,6 @@ class Suite1(unittest.TestCase):
         """TestCase:testcallflow2"""
         self.testId = self.params[0][0]
         inputParam = self.params[0][1]
-		outputParam = self.params[0][2]
+	outputParam = self.params[0][2]
         trackingId = "QA_"+self._testMethodName[4:]+str(time.time()).replace(".","")[8:]
         return "PASS"
