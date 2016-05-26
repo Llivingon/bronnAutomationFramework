@@ -1,0 +1,15 @@
+#
+#Modules required for running PyATF
+#
+pip install flask
+easy_install requests
+pip install mock
+easy_install flask-wtf
+easy_install passlib
+easy_install dbconnect
+pip install python-dateutil
+pip install MySQL-python
+easy_install lxml
+pip install Flask-MySQLdb
+pip install mysql-connector-repackaged
+pip install Flask-Session
